@@ -1,0 +1,52 @@
+<div>
+  <div>
+    <button (click)="getPlayers()">Alpha</button>
+    <button (click)="getSortAflClub()">AFL Club</button>
+    <button (click)="getSortWanted()">Wanted</button>
+    <button (click)="getSortAvailable()">Avail</button>
+    <button (click)="getSortDraftedBy()">Drafted</button>
+    <button (click)="getByComment('next')">Next</button>
+    <button (click)="getByComment('lure')">Lure</button>
+    <button (click)="getByComment('late')">Late</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button (click)="getSortStat('kicks')">Kicks</button>
+    <button (click)="getSortStat('handballs')">H'balls</button>
+    <button (click)="getSortStat('marks')">Marks</button>
+    <button (click)="getSortStat('tackles')">Tackles</button>
+    <button (click)="getSortStat('goals')">Goals</button>
+    <button (click)="getSortStat('hitouts')">Rucks</button>
+    <button (click)="getSortStat('star')">Star</button>
+  </div>
+
+  <player-detail [player]="selectedPlayer"></player-detail>
+
+  <team (playerSelectedEvent)="selectByName($event)"></team>
+
+  <ul class="players">
+    <li *ngFor="#player of players"
+        [class.selected]="player === selectedPlayer"
+        [class.want]="player.priority > 0 && player.priority < 500"
+        [class.avoid]="player.priority > 500"
+        [class.drafted]="player.draftedBy != null && player.draftedBy != ''"
+        [class.mine]="player.draftedBy === 'Ruiboys'"
+        (click)="onSelect(player)">
+      <span class="badge">{{player.name + ' (' + player.aflClub + ')'}}</span>
+      <span class="text">
+        <span class="prioritized" *ngIf="player.priority > 0 && player.priority < 500">{{player.priority}} {{player.pos}}</span>
+        {{player.comment}}
+        <span class="stats">
+          {{'k ' + player.kicks/10 + ' h ' + player.handballs/10 + ' m ' + player.marks/10 + ' t '
+           + player.tackles/10 + ' g ' + player.goals/10 + ' r ' + player.hitouts/10 + ' s ' + player.star/10 + ' # ' + player.played}}
+        </span>
+        <span class="draftedBy" *ngIf="player.draftedBy">{{player.draftedBy + ' ' + player.cents/100}}</span>
+      </span>
+    </li>
+  </ul>
+
+  <div>
+    <form>
+      <input [(ngModel)]="q" placeholder="comment to search"/>
+      <button (click)="getByComment(q)">Go</button>
+    </form>
+  </div>
+</div>

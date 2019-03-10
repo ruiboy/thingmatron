@@ -1,0 +1,53 @@
+<div class="team">
+  <div class="menu">
+    <button (click)="getTeam('Ruiboys')">Ruiboys</button>
+    <button (click)="getTeam('Austins')">Austins</button>
+    <button (click)="getTeam('Cheetahs')">Cheetahs</button>
+    <button (click)="getTeam('Fred')">Fred</button>
+    <button (click)="getTeam('Slashers')">Slashers</button>
+    <button (click)="getTeam('THC')">THC</button>
+  </div>
+
+  <div *ngIf="team" class="body">
+    <div class="club">{{team.club}}</div>
+    <div class="info">
+      players&nbsp;&nbsp;&nbsp;{{getTotalPlayers()}}&nbsp;&nbsp;&nbsp;
+      spent&nbsp;&nbsp;&nbsp;{{getTotalCents() / 100}}&nbsp;&nbsp;&nbsp;&nbsp;
+      need&nbsp;&nbsp;&nbsp;{{30 - getTotalPlayers()}}&nbsp;&nbsp;&nbsp;
+      budget&nbsp;&nbsp;&nbsp;{{35 - (getTotalCents() / 100)}}
+    </div>
+    <ul class="pos kicks">
+      <lh>Kicks</lh>
+      <li *ngFor="#player of team.k" (click)="selectPlayer(player.name)">{{player.name + ' ' + player.kicks/10 + ' (' + player.cents/100 + ')'}}</li>
+    </ul>
+    <ul class="pos handballs">
+      <lh>Handballs</lh>
+      <li *ngFor="#player of team.h" (click)="selectPlayer(player.name)">{{player.name + ' ' + player.handballs/10 + ' (' + player.cents/100 + ')'}}</li>
+    </ul>
+    <ul class="pos marks">
+      <lh>Marks</lh>
+      <li *ngFor="#player of team.m" (click)="selectPlayer(player.name)">{{player.name + ' ' + player.marks/10 + ' (' + player.cents/100 + ')'}}</li>
+    </ul>
+    <ul class="pos tackles">
+      <lh>Tackles</lh>
+      <li *ngFor="#player of team.t" (click)="selectPlayer(player.name)">{{player.name + ' ' + player.tackles/10 + ' (' + player.cents/100 + ')'}}</li>
+    </ul>
+    <ul class="pos goals">
+      <lh>Goals</lh>
+      <li *ngFor="#player of team.g" (click)="selectPlayer(player.name)">{{player.name + ' ' + player.goals/10 + ' (' + player.cents/100 + ')'}}</li>
+    </ul>
+    <ul class="pos rucks">
+      <lh>Rucks</lh>
+      <li *ngFor="#player of team.r" (click)="selectPlayer(player.name)">{{player.name + ' ' + player.hitouts/10 + ' (' + player.cents/100 + ')'}}</li>
+    </ul>
+    <ul class="pos star">
+      <lh>Star</lh>
+      <li *ngFor="#player of team.s" (click)="selectPlayer(player.name)">{{player.name + ' ' + player.star/10 + ' (' + player.cents/100 + ')'}}</li>
+    </ul>
+    <ul class="pos unknown">
+      <lh>Unknown</lh>
+      <li *ngFor="#player of team.x" (click)="selectPlayer(player.name)">{{player.name + ' ' + player.star/10 + ' (' + player.cents/100 + ')'}}</li>
+    </ul>
+  </div>
+
+</div>

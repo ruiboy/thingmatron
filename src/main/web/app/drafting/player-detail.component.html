@@ -1,0 +1,61 @@
+  <div *ngIf="player" class="pd">
+    <form (ngSubmit)="updatePlayer()" #playerForm="ngForm">
+      <div class="player">{{player.name}} ({{player.aflClub}})</div>
+      <div>
+        thoughts
+        <span>
+          <select [(ngModel)]="player.priority" ngControl="priority">
+            <option value="500"></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="499">?</option>
+            <option value="1000">Avoid</option>
+          </select>
+        </span>
+        <span>
+          <select [(ngModel)]="player.pos" ngControl="pos">
+            <option value=""></option>
+            <option value="K">K</option>
+            <option value="M">M</option>
+            <option value="H">H</option>
+            <option value="T">T</option>
+            <option value="G">G</option>
+            <option value="R">R</option>
+            <option value="S">S</option>
+          </select>
+        </span>
+        <span><input [(ngModel)]="player.comment" placeholder="comment" ngControl="comment" style="width:34em" maxlength="40"/></span>
+      </div>
+      <div>
+        stats
+        <span>k <input [(ngModel)]="player.kicks" ngControl="kicks" style="width:2.5em"/></span>
+        <span>h <input [(ngModel)]="player.handballs" ngControl="handballs" style="width:2.5em"/></span>
+        <span>m <input [(ngModel)]="player.marks" ngControl="marks" style="width:2.5em"/></span>
+        <span>t <input [(ngModel)]="player.tackles" ngControl="tackles" style="width:2.5em"/></span>
+        <span>g <input [(ngModel)]="player.goals" ngControl="goals" style="width:2.5em"/></span>
+        <span>r <input [(ngModel)]="player.hitouts" ngControl="hitouts" style="width:2.5em"/></span>
+        <span>s <input [(ngModel)]="player.star" ngControl="star" style="width:2.5em"/></span>
+        <span># <input [(ngModel)]="player.played" ngControl="played" style="width:2.5em"/></span>
+        <span>c <input [(ngModel)]="player.aflClub" ngControl="aflClub" style="width:12em"/></span>
+      </div>
+      <div>
+        drafted by 
+        <span>
+          <select [(ngModel)]="player.draftedBy" ngControl="draftedBy">
+            <option value=""></option>
+            <option value="Ruiboys">Ruiboys</option>
+            <option value="Austins">Austins</option>
+            <option value="Cheetahs">Cheetahs</option>
+            <option value="Fred">Fred</option>
+            <option value="Slashers">Slashers</option>
+            <option value="THC">THC</option>
+          </select>
+        </span>
+        <span>for <input [(ngModel)]="player.cents" ngControl="cents" style="width:3em"/> c</span>
+      </div>
+      <div>
+        <span><button type="submit" [disabled]="!playerForm.form.valid">Save</button></span>
+      </div>
+    </form>
+  </div>

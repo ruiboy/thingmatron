@@ -3,7 +3,7 @@ package ffl.ffl.club.drafting;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "player18")
+@Document(collection = "player19")
 public class Player {
 
 	@Id

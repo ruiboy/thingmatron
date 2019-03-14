@@ -47,7 +47,7 @@ export class DraftingService {
       console.log('updating player' + body)
       let headers = new Headers({ 'Content-Type': 'application/json' });
       let options = new RequestOptions({ headers: headers });
-      return this.http.post('/drafting/updatePlayer', body, options)
+      return this.http.post('/drafting/updatePlayerWrapped', body, options)
         .map(res => <Player> res.json())
         .catch(this.handleError);
     }

@@ -76,10 +76,16 @@ public class DraftingRestController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/drafting/updatePlayer", method = RequestMethod.POST, produces = "application/json")
-	public Player updatePlayer(@RequestBody PlayerWrapper player) {
+	@RequestMapping(value = "/drafting/updatePlayerWrapped", method = RequestMethod.POST, produces = "application/json")
+	public Player updatePlayerWrapped(@RequestBody PlayerWrapper player) {
 		return playerRepo.save(player.getPlayer());
 	}
+
+  @ResponseBody
+  @RequestMapping(value = "/drafting/updatePlayer", method = RequestMethod.POST, produces = "application/json")
+  public Player updatePlayer(@RequestBody Player player) {
+    return playerRepo.save(player);
+  }
 
   @ResponseBody
 	@RequestMapping(value = "/drafting/getTeam/{club}", method = RequestMethod.GET, produces = "application/json")
@@ -173,10 +179,10 @@ public class DraftingRestController {
     }
   }
 
-  // gaaaaah - this so can map to incoming json:
-	// {"player":{"club":"Carey","aflClub":"NM","comment":"for fux
-	// sake","cents":0}}
-	// what gives?
+  // gaaaaah - this so can map to incoming json ---- but ONLY from the angular client.  it comes in like:
+  // {"player":{"club":"Carey","aflClub":"NM","comment":"for fux
+  // sake","cents":0}}
+  // what gives? ... clearly doing something wrong in the client code
 	public static class PlayerWrapper {
 		private Player player;
 

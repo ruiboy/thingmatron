@@ -1,9 +1,11 @@
 package ffl.ffl.club.drafting;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "player19")
+@Document(collection = "player20")
 public class Player {
 
 	@Id
@@ -15,6 +17,7 @@ public class Player {
 	private String comment;
 	private String draftedBy;
 	private int cents;
+  private Date draftedTs;
 	private int played;
 	// stats are averages*10
 	private int kicks;
@@ -99,7 +102,17 @@ public class Player {
 		this.cents = cents;
 	}
 
-	// stats
+  public Date getDraftedTs()
+  {
+    return draftedTs;
+  }
+
+  public void setDraftedTs(Date draftedTs)
+  {
+    this.draftedTs = draftedTs;
+  }
+
+  // stats
 	
 	public int getPlayed() {
 		return played;

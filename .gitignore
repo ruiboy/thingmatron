@@ -32,6 +32,9 @@ Thumbs.db
 .metadata/
 target/
 
+*.iml
+.idea
+
 # Front End Dependency Generated
 src/main/web/.sass-cache/
 src/main/web/bower_components/

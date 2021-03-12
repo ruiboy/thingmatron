@@ -4,20 +4,24 @@ FFL app built with angular2, spring boot REST api, mongo
 
 
 ## mongo
-mongod
+` mongod`
 
-mongo
-> show collections
+`mongo`
+```
+show collections
 player    <-- 2017
 player18  <-- 2018
+```
 
 ## app
-gradle clean build 
-gradle bootRun
+`gradle clean build`
+
+`gradle bootRun`
 
 ## Collating data
+(see also statsfromexaflweb/README.txt)
 * statsfromexaflweb/do.sh to get all year stats in many xml files;
-* CollateData.java to put all data in one xml file;
+* statsfromexaflweb/collate/CollateData.java to put all data in one xml file;
 * MongoifyCollatedStats.xsl to turn it into mongo bulk update;
 * create new collection in mongo;
 * mongo < out.mongobulkupdate18

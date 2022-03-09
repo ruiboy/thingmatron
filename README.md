@@ -4,7 +4,7 @@ FFL app built with angular2, spring boot REST api, mongo
 
 
 ## mongo
-` mongod`
+`mongod --config /usr/local/etc/mongod.conf`
 
 `mongo`
 ```
@@ -14,6 +14,8 @@ player18  <-- 2018
 ```
 
 ## app
+# Needs gradle 2.14.1
+
 `gradle clean build`
 
 `gradle bootRun`

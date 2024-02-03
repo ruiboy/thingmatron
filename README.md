@@ -25,10 +25,10 @@ player18  <-- 2018
 * statsfromexaflweb/do.sh to get all year stats in many xml files;
 * statsfromexaflweb/collate/CollateData.java to put all data in one xml file;
 * MongoifyCollatedStats.xsl to turn it into mongo bulk update;
-* create new collection in mongo;
-* mongo < out.mongobulkupdate18
+* create new collection in mongo: `mongo < out.mongobulkupdate18`
 
-
+## Update for the new year
+* Update src/main/java/ffl/ffl/club/drafting/Player.java to reference new collection - eg `player23`
 
 # spring-boot-angular2 starter kit
 Spring Boot with Gradle, Angular2, TypeScript, Sass, and a Gulp build.
